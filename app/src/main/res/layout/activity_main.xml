@@ -8,75 +8,79 @@
   android:orientation="vertical"
   android:padding="16dp"
   tools:context=".MainActivity">
-  <EditText
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Num 1"
-    android:ems="10"
-    android:id="@+id/etFirstNum"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toStartOf="@+id/etSecondNum"/>
-  <EditText
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Num 2"
-    android:ems="10"
-    android:id="@+id/etSecondNum"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintHorizontal_bias="0.5"/>
-  <Button
-    android:text="Add"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnAdd"
-    app:layout_constraintTop_toBottomOf="@+id/etFirstNum"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/etFirstNum"
-    android:layout_marginEnd="5dp"/>
-  <Button
-    android:text="Subtract"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnSubtract"
-    app:layout_constraintTop_toBottomOf="@+id/etSecondNum"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginStart="5dp"/>
-  <Button
-    android:text="Multiply"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnMultiply"
-    app:layout_constraintTop_toBottomOf="@+id/btnAdd"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/btnAdd"
-  />
-  <Button
-    android:text="Division"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnDiv"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnSubtract"
-    app:layout_constraintStart_toStartOf="@+id/btnSubtract"/>
+  
   <TextView
-    android:text="Result"
-    android:layout_width="0dp"
+    android:id="@+id/tvQuestion"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textSize="30sp"
-    android:id="@+id/tvResult"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/etSecondNum"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginBottom="16dp"/>
+    android:text="What do you want on your burger?"
+    android:textSize="26sp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+  <RadioGroup
+    android:id="@+id/rgMeat"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+    app:layout_constraintStart_toStartOf="parent">
+    
+    <RadioButton
+      android:id="@+id/rbBeef"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:checked="true"
+      android:text="Beef"/>
+    
+    <RadioButton
+      android:id="@+id/rbChicken"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Chicken"/>
+    
+    <RadioButton
+      android:id="@+id/rbPork"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Pork"/>
+  
+  </RadioGroup>
+  
+  <CheckBox
+    android:id="@+id/cbCheese"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Cheese"
+    app:layout_constraintTop_toBottomOf="@+id/rgMeat"
+    app:layout_constraintStart_toStartOf="parent"/>
+  <CheckBox
+    android:id="@+id/cbOnions"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Onions"
+    app:layout_constraintTop_toBottomOf="@+id/cbCheese"
+    app:layout_constraintStart_toStartOf="parent"/>
+  <CheckBox
+    android:id="@+id/cbSalad"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Salad"
+    app:layout_constraintTop_toBottomOf="@+id/cbOnions"
+    app:layout_constraintStart_toStartOf="parent"/>
+  <Button
+    android:id="@+id/btnOrder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Order"
+    app:layout_constraintTop_toBottomOf="@+id/cbSalad"
+    app:layout_constraintStart_toStartOf="parent"/>
+  <TextView
+    android:id="@+id/tvOrder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="26sp"
+    app:layout_constraintTop_toBottomOf="@+id/btnOrder"
+    app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

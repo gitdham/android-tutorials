@@ -1,6 +1,7 @@
 package com.example.tutorials
 
 import android.os.Bundle
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -9,33 +10,18 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    btnOrder.setOnClickListener {
+      val checkedMeatRadioButtonId = rgMeat.checkedRadioButtonId
+      val meat = findViewById<RadioButton>(checkedMeatRadioButtonId)
+      val cheese = cbCheese.isChecked
+      val onions = cbOnions.isChecked
+      val salad = cbSalad.isChecked
+      val orderString = "You ordered a burger with: \n${meat.text}" +
+          (if(cheese) "\nCheese" else "") +
+          (if(onions) "\nOnions" else "") +
+          (if(salad) "\nSalad" else "")
 
-    btnAdd.setOnClickListener {
-      val firstNum = etFirstNum.text.toString().toInt()
-      val secondNum = etSecondNum.text.toString().toInt()
-      val result = firstNum + secondNum
-      tvResult.text = result.toString()
-    }
-
-    btnSubtract.setOnClickListener {
-      val firstNum = etFirstNum.text.toString().toInt()
-      val secondNum = etSecondNum.text.toString().toInt()
-      val result = firstNum - secondNum
-      tvResult.text = result.toString()
-    }
-
-    btnMultiply.setOnClickListener {
-      val firstNum = etFirstNum.text.toString().toInt()
-      val secondNum = etSecondNum.text.toString().toInt()
-      val result = firstNum * secondNum
-      tvResult.text = result.toString()
-    }
-
-    btnDiv.setOnClickListener {
-      val firstNum = etFirstNum.text.toString().toFloat()
-      val secondNum = etSecondNum.text.toString().toFloat()
-      val result = firstNum / secondNum
-      tvResult.text = result.toString()
+      tvOrder.text = orderString
     }
   }
 }
