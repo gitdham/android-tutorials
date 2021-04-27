@@ -9,8 +9,33 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    btnAddImg.setOnClickListener {
-      ivImage.setImageResource(R.drawable.sample)
+
+    btnAdd.setOnClickListener {
+      val firstNum = etFirstNum.text.toString().toInt()
+      val secondNum = etSecondNum.text.toString().toInt()
+      val result = firstNum + secondNum
+      tvResult.text = result.toString()
+    }
+
+    btnSubtract.setOnClickListener {
+      val firstNum = etFirstNum.text.toString().toInt()
+      val secondNum = etSecondNum.text.toString().toInt()
+      val result = firstNum - secondNum
+      tvResult.text = result.toString()
+    }
+
+    btnMultiply.setOnClickListener {
+      val firstNum = etFirstNum.text.toString().toInt()
+      val secondNum = etSecondNum.text.toString().toInt()
+      val result = firstNum * secondNum
+      tvResult.text = result.toString()
+    }
+
+    btnDiv.setOnClickListener {
+      val firstNum = etFirstNum.text.toString().toFloat()
+      val secondNum = etSecondNum.text.toString().toFloat()
+      val result = firstNum / secondNum
+      tvResult.text = result.toString()
     }
   }
 }
