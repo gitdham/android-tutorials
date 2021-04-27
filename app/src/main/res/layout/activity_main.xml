@@ -8,75 +8,25 @@
   android:orientation="vertical"
   android:padding="16dp"
   tools:context=".MainActivity">
-  <EditText
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Num 1"
-    android:ems="10"
-    android:id="@+id/etFirstNum"
-    app:layout_constraintTop_toTopOf="parent"
+  
+  <ImageView
+    android:id="@+id/ivImage"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:scaleType="centerCrop"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toStartOf="@+id/etSecondNum"/>
-  <EditText
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:inputType="number"
-    android:hint="Num 2"
-    android:ems="10"
-    android:id="@+id/etSecondNum"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintHorizontal_bias="0.5"/>
+    app:layout_constraintBottom_toBottomOf="parent"/>
+  
   <Button
-    android:text="Add"
-    android:layout_width="0dp"
+    android:id="@+id/btnAddImg"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/btnAdd"
-    app:layout_constraintTop_toBottomOf="@+id/etFirstNum"
+    android:text="Add Image"
+    app:layout_constraintTop_toBottomOf="@+id/ivImage"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/etFirstNum"
-    android:layout_marginEnd="5dp"/>
-  <Button
-    android:text="Subtract"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnSubtract"
-    app:layout_constraintTop_toBottomOf="@+id/etSecondNum"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginStart="5dp"/>
-  <Button
-    android:text="Multiply"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnMultiply"
-    app:layout_constraintTop_toBottomOf="@+id/btnAdd"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="@+id/btnAdd"
-  />
-  <Button
-    android:text="Division"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnDiv"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnSubtract"
-    app:layout_constraintStart_toStartOf="@+id/btnSubtract"/>
-  <TextView
-    android:text="Result"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:textSize="30sp"
-    android:id="@+id/tvResult"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/etSecondNum"
-    app:layout_constraintStart_toEndOf="@+id/etFirstNum"
-    app:layout_constraintHorizontal_bias="0.0"
-    android:layout_marginBottom="16dp"/>
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
