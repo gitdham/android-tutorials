@@ -10,8 +10,14 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    btnOpenActivity.setOnClickListener {
+    btnApply.setOnClickListener {
+      val name = etName.text.toString()
+      val age = etAge.text.toString().toInt()
+      val country = etCountry.text.toString()
+      val person = Person(name, age, country)
+
       Intent(this, SecondActivity::class.java).also {
+        it.putExtra("EXTRA_PERSON", person)
         startActivity(it)
       }
     }
