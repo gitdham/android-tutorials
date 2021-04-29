@@ -9,40 +9,15 @@
   android:padding="16dp"
   tools:context=".MainActivity">
   
-  <EditText
-    android:id="@+id/etName"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Name"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"/>
-  
-  <EditText
-    android:id="@+id/etAge"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Age"
-    app:layout_constraintTop_toBottomOf="@+id/etName"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"/>
-  <EditText
-    android:id="@+id/etCountry"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Country"
-    app:layout_constraintTop_toBottomOf="@+id/etAge"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"/>
   <Button
-    android:id="@+id/btnApply"
+    android:id="@+id/btnRequestPermissions"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Apply"
-    app:layout_constraintTop_toBottomOf="@+id/etCountry"
-    app:layout_constraintEnd_toEndOf="parent"/>
-  
+    android:text="Request Permissions"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
