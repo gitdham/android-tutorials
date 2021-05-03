@@ -1,14 +1,12 @@
 package com.example.tutorials
 
+import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,123 +14,32 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    val addContactDialog = AlertDialog.Builder(this)
-      .setTitle("Add contact")
-      .setMessage("Do you want to add Mr. X to your contact list?")
-      .setIcon(R.drawable.ic_add_contact_alert)
-      .setPositiveButton("Yes") { _, _ ->
-        Toast.makeText(this, "You added Mr. X to your contact", Toast.LENGTH_SHORT).show()
-      }
-      .setNegativeButton("No") { _, _ ->
-        Toast.makeText(this, "You didn't add Mr. X to your contact", Toast.LENGTH_SHORT)
-          .show()
-      }.create()
-
-    btnDialog1.setOnClickListener {
-      addContactDialog.show()
-    }
-
-    val options = arrayOf("First Item", "Second Item", "Third Item")
-    val singleChoiceDialog = AlertDialog.Builder(this)
-      .setTitle("Choose one of these options")
-      .setSingleChoiceItems(options, 0) { dialogInterface, i ->
-        Toast.makeText(this, "You clicked on ${options[i]}", Toast.LENGTH_SHORT).show()
-      }
-      .setPositiveButton("Accept") { _, _ ->
-        Toast.makeText(this, "You accepted the SingleChoiceDialog", Toast.LENGTH_SHORT)
-          .show()
-      }
-      .setNegativeButton("Decline") { _, _ ->
-        Toast.makeText(this, "You declined the SingleChoiceDialog", Toast.LENGTH_SHORT)
-          .show()
-      }.create()
-
-    btnDialog2.setOnClickListener {
-      singleChoiceDialog.show()
-    }
-
-    val multiChoiceDialog = AlertDialog.Builder(this)
-      .setTitle("Choose one of these options")
-      .setMultiChoiceItems(
-        options, booleanArrayOf(false, false, false)
-      ) { _, i, isChecked ->
-        if(isChecked) Toast.makeText(
-          this, "You checked ${options[i]}", Toast.LENGTH_SHORT
-        ).show()
-        else Toast.makeText(this, "You unchecked ${options[i]}", Toast.LENGTH_SHORT)
-          .show()
-      }
-      .setPositiveButton("Accept") { _, _ ->
-        Toast.makeText(this, "You accepted the MultiChoiceDialog", Toast.LENGTH_SHORT)
-          .show()
-      }
-      .setNegativeButton("Decline") { _, _ ->
-        Toast.makeText(this, "You declined the MultiChoiceDialog", Toast.LENGTH_SHORT)
-          .show()
-      }.create()
-
-    btnDialog3.setOnClickListener {
-      multiChoiceDialog.show()
-    }
-
-
-    val customList = listOf("First", "Second", "Third", "Fourth")
-    val adapter = ArrayAdapter<String>(
-      this, R.layout.support_simple_spinner_dropdown_item, customList
+    var todoList = mutableListOf(
+      Todo("Feed my cat", false),
+      Todo("Take a shower", true),
     )
-    spMonths.adapter = adapter
 
-    spMonths.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-      override fun onItemSelected(
-        parent: AdapterView<*>?, view: View?, position: Int, id: Long
-      ) {
-        Toast.makeText(
-          this@MainActivity,
-          "You selected ${parent?.getItemAtPosition(position).toString()}",
-          Toast.LENGTH_LONG
-        ).show()
-      }
+    val adapter = TodoAdapter(todoList)
+    rvTotos.adapter = adapter
+    rvTotos.layoutManager = LinearLayoutManager(this)
 
-      override fun onNothingSelected(parent: AdapterView<*>?) {
-
-      }
-
+    btnAddTodo.setOnClickListener {
+      val title = etTodo.text.toString()
+      val todo = Todo(title, false)
+      todoList.add(todo)
+      adapter.notifyItemInserted(todoList.size - 1)
+      hideKeyboard()
+      etTodo.text.clear()
+      Toast.makeText(this, "Added new todo", Toast.LENGTH_SHORT).show()
     }
   }
 
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    menuInflater.inflate(R.menu.app_bar_menu, menu)
-    return true
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when(item.itemId) {
-      R.id.miAddContact -> Toast.makeText(
-        this,
-        "You clicked on add contact",
-        Toast.LENGTH_SHORT
-      ).show()
-
-      R.id.miFavorites  -> Toast.makeText(
-        this,
-        "You clicked on favorites",
-        Toast.LENGTH_SHORT
-      ).show()
-
-      R.id.miSettings   -> Toast.makeText(
-        this,
-        "You clicked on settings",
-        Toast.LENGTH_SHORT
-      ).show()
-
-      R.id.miFeedback   -> Toast.makeText(
-        this,
-        "You clicked on feedback",
-        Toast.LENGTH_SHORT
-      ).show()
-
-      R.id.miClose      -> finish()
+  private fun hideKeyboard(){
+    val view = this.currentFocus
+    if(view != null){
+      val hideMe = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      hideMe.hideSoftInputFromWindow(view.windowToken,0)
     }
-    return true
+    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
   }
 }

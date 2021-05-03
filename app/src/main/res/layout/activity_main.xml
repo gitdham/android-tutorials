@@ -9,44 +9,31 @@
   android:padding="16dp"
   tools:context=".MainActivity">
   
-  <Button
-    android:id="@+id/btnDialog1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Dialog 1"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
-  
-  <Button
-    android:id="@+id/btnDialog2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Dialog 2"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnDialog1"/>
-  <Button
-    android:id="@+id/btnDialog3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Dialog 3"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btnDialog2"/>
-  
-  <Spinner
-    android:id="@+id/spMonths"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:entries="@array/months"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintEnd_toEndOf="parent"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvTotos"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/etTodo"
     app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+  
+  <EditText
+    android:id="@+id/etTodo"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:hint="New Todo"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"/>
+  
+  <Button
+    android:id="@+id/btnAddTodo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginEnd="16dp"
     app:layout_constraintBottom_toBottomOf="parent"/>
 
 
